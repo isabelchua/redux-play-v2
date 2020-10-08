@@ -1,12 +1,15 @@
 import React from "react";
 import { useState } from "react";
+import { connect } from "react-redux";
+import { addPost } from "./actions/post";
 
-const Form = () => {
+const Form = ({ addPost }) => {
 	const [form, setForm] = useState("");
 
 	const onSubmit = e => {
 		e.preventDefault();
 		setForm(form);
+		addPost({ form });
 	};
 	return (
 		<div>
@@ -23,4 +26,4 @@ const Form = () => {
 	);
 };
 
-export default Form;
+export default connect(null, { addPost })(Form);
